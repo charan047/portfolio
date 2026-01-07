@@ -2,7 +2,7 @@
   "name": "charan-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://charanEdukulla.github.io",
+  "homepage": "https://charan047.github.io/portfolio",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.14.0",
