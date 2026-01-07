@@ -1,107 +1,39 @@
-# Modern Portfolio Website
+# Charan Edukulla — Portfolio
 
-A responsive and interactive portfolio website built with React and modern web technologies.
+A fast, polished personal portfolio built with React, designed to look great on any screen and highlight work clearly.
 
-## Features
+## Highlights
 
-- Responsive design that works on all device sizes
-- Modern UI with glassmorphism effects
-- Animated sections with Framer Motion
-- Project showcase with filtering capability
-- Interactive timeline for work experience
-- Skills section with visual proficiency indicators
-- Contact form with validation
-- Optimized performance
+- Fully responsive layout (mobile → desktop)
+- Clean “glass” UI with subtle gradients and depth
+- Smooth section reveals + micro-interactions (Framer Motion)
+- Projects gallery with filters + search for quick browsing
+- Experience timeline / cards for readable storytelling
+- Skills displayed as modern bento-style tiles
+- Contact section with validation-ready form
+- Performance-friendly styling and lightweight components
 
-## Technologies Used
+## Stack
 
-- React.js
-- Framer Motion for animations
-- CSS3 with custom properties
-- Responsive design principles
+- React
+- Framer Motion
+- CSS (custom properties + reusable utility patterns)
 - Modern JavaScript (ES6+)
 
-## Project Structure
+## Folder Layout
 
-```
+```txt
 src/
 ├── components/
-│   ├── layout/       # Layout components like NavBar, Footer
-│   └── sections/     # Main content sections
+│   ├── layout/            # Navbar, footer, shared layout
+│   └── sections/          # Page sections
 │       ├── Hero/
 │       ├── Skills/
 │       ├── Experience/
 │       ├── Projects/
+│       ├── Education/
 │       └── Contact/
-├── assets/           # Images, icons, and other static assets
-├── styles/           # Global CSS styles
-├── utils/            # Utility functions and helpers
-└── App.js            # Main application component
-```
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v14.0.0 or later)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository
-
-   ```
-   git clone https://github.com/yourusername/portfolio.git
-   ```
-
-2. Install dependencies
-
-   ```
-   npm install
-   ```
-
-   or
-
-   ```
-   yarn install
-   ```
-
-3. Start the development server
-   ```
-   npm start
-   ```
-   or
-   ```
-   yarn start
-   ```
-
-## Deployment
-
-This site can be easily deployed to platforms like:
-
-- Netlify
-- Vercel
-- GitHub Pages
-The GitHub Actions workflow `.github/workflows/deploy.yml` automates deployment to GitHub Pages.
-
-## Custom Configuration
-
-### Changing Personal Information
-
-Edit the data files in the respective component folders to update:
-
-- Personal information
-- Work experience
-- Projects
-- Skills
-
-### Theme Customization
-
-The color scheme and other design variables can be modified in the CSS files using custom properties.
-
-## Performance Optimization
-
-- Lazy loading of images
-- Code splitting for better load times
-- Optimized animations for performance
-- Responsive images for different device sizes
+├── assets/                # Images, icons, static content
+├── styles/                # Global styles + theme variables
+├── utils/                 # Helpers and small utilities
+└── App.js                 # App entry + routing/section order
