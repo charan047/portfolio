@@ -1,0 +1,168 @@
+/* Skills section — premium bento tiles (UPDATED + balanced, no empty gap) */
+
+.skills {
+  width: 100%;
+  padding: var(--space-0) 0;
+  position: relative;
+}
+
+.skills-container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.skills .section-subtitle {
+  margin: 0 auto var(--space-5);
+  max-width: 720px;
+}
+
+/* ===== GRID ===== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-4);
+  align-items: stretch;
+  grid-auto-flow: dense; /* packs layout nicely */
+}
+
+/* ===== CARD BASE ===== */
+.skill-card {
+  grid-column: span 6;
+  background: var(--bg-card);
+  border: var(--card-border);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.15rem, 2.2vw, 1.75rem); /* tighter + responsive */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 220px; /* keeps rows aligned */
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background:
+    radial-gradient(60% 60% at 10% 0%, var(--overlay-secondary), transparent 60%),
+    radial-gradient(60% 60% at 90% 20%, var(--overlay-primary), transparent 60%);
+  opacity: 0.35; /* was 0.75 (too strong) */
+  pointer-events: none;
+}
+
+/* subtle edge highlight */
+.skill-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  opacity: 0.9;
+}
+
+.skill-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-hover);
+}
+
+/* ===== HEADER ===== */
+.skill-card-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  position: relative;
+  z-index: 1;
+  margin-bottom: var(--space-3);
+}
+
+.skill-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-lg);
+  display: grid;
+  place-items: center;
+  border: var(--border-thin);
+  background: color-mix(in srgb, var(--bg-badge) 70%, transparent);
+  color: var(--text-primary);
+}
+
+.skill-meta {
+  display: grid;
+  gap: 2px;
+}
+
+.skill-title {
+  font-size: clamp(1.25rem, 1.4vw, var(--font-xl));
+  letter-spacing: -0.02em;
+  font-weight: var(--fw-semibold);
+}
+
+.skill-count {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+}
+
+/* ===== CHIPS (push to bottom for consistent alignment) ===== */
+.skill-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: auto; /* key: aligns chips across cards */
+  position: relative;
+  z-index: 1;
+  padding-top: var(--space-3);
+}
+
+.skill-chip {
+  border: 1px solid color-mix(in srgb, var(--border-hover) 55%, transparent);
+  background: color-mix(in srgb, var(--bg-badge) 70%, transparent);
+  color: var(--text-primary);
+  padding: 0.45rem 0.72rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  line-height: 1;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.skill-chip:hover {
+  transform: translateY(-1px);
+  border-color: var(--border-hover);
+  background: var(--bg-hover);
+}
+
+/* ===== BENTO VARIATION (FIXES THE UGLY GAP) =====
+   Make Data & ML a full-width feature card.
+   Your Data & ML appears to be the 3rd card -> .skill-card-2
+*/
+.skill-card-0 { grid-column: span 6; }  /* Languages */
+.skill-card-1 { grid-column: span 6; }  /* Frameworks */
+.skill-card-2 { grid-column: span 12; } /* Data & ML (FULL WIDTH) */
+
+/* If you have more cards later, they’ll naturally fill 2 columns */
+.skill-card-3 { grid-column: span 6; }
+.skill-card-4 { grid-column: span 6; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 960px) {
+  .skills-container {
+    padding: 0 var(--space-3);
+  }
+
+  .skill-card,
+  .skill-card-0,
+  .skill-card-1,
+  .skill-card-2,
+  .skill-card-3,
+  .skill-card-4 {
+    grid-column: span 12;
+    min-height: unset;
+  }
+}
