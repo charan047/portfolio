@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import { LazyMotion, domAnimation, m as motion } from "framer-motion";
 import "./Contact.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -36,9 +36,9 @@ const Contact = () => {
   });
 
   const contactInfo = {
-    email: "your.email@example.com",
-    phone: "+1 (000) 000-0000",
-    location: "Orlando, FL",
+    email: "charankumaredukulla@gmail.com",
+    phone: "+1 (xxx) xxx-xxxx",
+    location: "Orlando, FL (Open to relocation)",
   };
 
   const onChange = (e) => {
@@ -51,7 +51,14 @@ const Contact = () => {
     formData.subject.trim() &&
     formData.message.trim();
 
-  const sendEmail = async (e) => {
+  
+  useEffect(() => {
+    // Initialize EmailJS globally (recommended by EmailJS docs)
+    const pk = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+    if (pk) emailjs.init({ publicKey: pk });
+  }, []);
+
+const sendEmail = async (e) => {
     e.preventDefault();
     if (!canSend) {
       setStatus({ type: "error", message: "Please fill out all fields." });
@@ -68,27 +75,37 @@ const Contact = () => {
         message: formData.message,
       };
 
-      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+      // EmailJS config
+      // Service ID is safe to keep as a default; keep template + public key in .env
+      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || "service_m0lextk";
       const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
       const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-      if (!serviceId || !templateId || !publicKey) {
+      if (!templateId || !publicKey) {
         setStatus({
           type: "error",
           message:
-            "Email service is not configured yet. Add EmailJS keys in .env to enable sending.",
+            "Email is not configured yet. Add REACT_APP_EMAILJS_TEMPLATE_ID and REACT_APP_EMAILJS_PUBLIC_KEY in .env.",
         });
         return;
       }
 
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      await emailjs.send(serviceId, templateId, templateParams, { publicKey });
 
       setStatus({ type: "success", message: "Message sent successfully!" });
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (err) {
+      // Surface EmailJS error details to speed up debugging (blocked domain / wrong keys / quota, etc.)
+      console.error("EmailJS error:", err);
+      const statusCode = err?.status || err?.statusCode || "unknown";
+      const detail =
+        err?.text ||
+        err?.message ||
+        (typeof err === "string" ? err : JSON.stringify(err, null, 2));
+
       setStatus({
         type: "error",
-        message: "Something went wrong. Please try again.",
+        message: `Email failed (${statusCode}). ${detail || "Check EmailJS keys + allowed domain."}`,
       });
     }
   };

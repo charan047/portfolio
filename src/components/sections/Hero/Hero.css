@@ -154,32 +154,29 @@
 
 .hero-role {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0.35rem;
+  align-items: center;
   font-size: clamp(1.05rem, 2.2vw, 1.5rem);
   color: var(--text-secondary);
   font-weight: var(--fw-semibold);
   margin-bottom: var(--space-4);
 }
 
-.typing-text {
-  white-space: nowrap;
-}
-
-.cursor {
-  width: 2px;
-  height: 1.08em;
-  background: color-mix(in srgb, var(--primary-color) 85%, white 15%);
-  border-radius: 2px;
+.role-badge {
   display: inline-block;
-  transform: translateY(2px);
-  animation: blink 1.1s infinite;
-  opacity: 0.85;
+  padding: 0.28rem 0.7rem;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--bg-card) 88%, transparent);
+  border: var(--border-thin);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  white-space: nowrap;
+  animation: roleEnter 240ms ease both;
 }
 
-@keyframes blink {
-  0%, 45% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+@keyframes roleEnter {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .hero-summary {
@@ -308,7 +305,7 @@
   position: absolute;
   left: 50%;
   bottom: -14px;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(14px); 
   z-index: 3;
   padding: 0.55rem 0.85rem;
   border-radius: var(--radius-full);
@@ -320,12 +317,17 @@
   font-weight: var(--fw-semibold);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  max-width: 280px;
+
+  /* ✅ updated for full visibility */
+  max-width: min(92vw, 520px);
+  width: max-content;
   text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  line-height: 1.2;
 }
+
 
 /* --- Hero “WOW” details --- */
 .hero-pill {
@@ -439,8 +441,8 @@
   z-index: 4;
 }
 
-.ft1 { top: 22px; left: -6px; animation-delay: 0.2s; }
-.ft2 { top: 78px; right: -6px; animation-delay: 1.1s; }
+.ft1 { top: 45px; left: -195px; animation-delay: 0.2s; }
+.ft2 { top: 78px; right: -46px; animation-delay: 1.1s; }
 
 @keyframes floatY {
   0%, 100% { transform: translateY(0); }

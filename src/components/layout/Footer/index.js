@@ -42,7 +42,7 @@ const Footer = () => {
               <FontAwesomeIcon icon={faLinkedin} className="fa-icon" />
             </a>
             <a
-              href="mailto:charan.kdf15@gmail.com"
+              href="mailto:charankumaredukulla@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Send me an email"
@@ -58,7 +58,7 @@ const Footer = () => {
           <FontAwesomeIcon icon={faHeart} className="heart" />
         </p>
         <p>
-          <span className="role">Software Engineer & Full-Stack Developer</span>
+          <span className="role">Software Engineer • Backend • Full‑Stack • Cloud/DevOps • GenAI</span>
         </p>
       </div>
     </footer>

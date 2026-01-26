@@ -22,59 +22,46 @@ const Experience = () => {
 const experiences = useMemo(
   () => [
     {
-      company: "HALO Music Productions",
-      position: "Java Full Stack Developer | AI Chatbot",
-      period: "Nov 2023 – Apr 2024",
-      location: "Hyderabad, TS",
-      jobType: "Full-time / Contract",
-      duration: "6 months",
+      company: "Halo Music Productions",
+      position: "Software Engineer",
+      period: "Feb 2023 – Aug 2024",
+      location: "Remote",
+      jobType: "Full-time",
+      duration: "1 yr 7 mos",
       summary:
-        "Built and scaled a music licensing platform with secure payments, streaming, and an AI chatbot to support users in real time.",
+        "Built scalable microservices and cloud-native media workflows for a music licensing platform, improving latency, reliability, and customer support automation.",
       keyPoint:
-        "Supported 1K+ concurrent users with Spring Boot services, AWS S3 streaming, Stripe payments, JWT security, and an NLP chatbot.",
+        "Sustained 1,000+ concurrent sessions at p95 <350ms, reduced failed uploads by 30%, cut MTTD from 30→10 minutes, and deflected 45% of support tickets via RAG automation.",
       achievements: [
-        "Supported 1K+ concurrent users on the licensing platform",
-        "Shipped Stripe payments + JWT auth + AWS S3 streaming end-to-end",
-        "Integrated AI chatbot for real-time customer support and licensing navigation",
+        "Sustained 1,000+ concurrent sessions with p95 latency <350ms via Spring Boot microservices + Redis caching",
+        "Reduced failed uploads by 30% by shipping multipart pre-signed uploads + retry logic on AWS S3/CloudFront (Terraform IaC)",
+        "Cut Mean Time to Detection from 30 min to 10 min via OpenTelemetry + Grafana SLI/SLO dashboards + alerting",
+        "Deflected 45% of support tickets by deploying a Python RAG pipeline with Pinecone for context-aware licensing answers",
       ],
       responsibilities: [
-        "Developed and maintained a music licensing platform using Java Spring Boot, engineered for 1K+ concurrent users with production-grade API design.",
-        "Implemented secure authentication and authorization using JWT, including protected routes and role-aware access patterns.",
-        "Delivered payment workflows with Stripe (checkout → confirmation → status handling) and improved reliability through validation and error handling.",
-        "Enabled music file storage + streaming using AWS S3 with secure access patterns and optimized delivery for smooth playback.",
-        "Developed and integrated an AI chatbot for real-time customer support using NLP-backed dialogue flows to answer licensing questions and guide platform navigation.",
+        "Engineered high-concurrency microservices and API workflows with database safety controls using Java/Spring Boot + Redis + PostgreSQL",
+        "Architected a cloud-native media pipeline (S3 + CloudFront) provisioned with Terraform; implemented multipart pre-signed URLs and automated retries",
+        "Modernized observability with OpenTelemetry, structured logs, and actionable dashboards; defined SLI/SLOs and alert policies",
+        "Built and integrated a RAG assistant for licensing inquiries using Python + Pinecone vector search + document ingestion and retrieval",
       ],
-      technologies: ["Java", "Spring Boot", "JWT", "AWS S3", "Stripe", "REST APIs", "NLP"],
+      technologies: [
+        "Java",
+        "Spring Boot",
+        "Redis",
+        "PostgreSQL",
+        "AWS (S3, CloudFront)",
+        "Terraform",
+        "OpenTelemetry",
+        "Grafana",
+        "Python",
+        "Pinecone",
+        "RAG",
+      ],
     },
-
-    {
-  company: "University of Central Florida",
-  position: "Graduate Teaching Assistant / Instructor Support (C, Databases, Java OOP)",
-  period: "Spring 2025 – Present",
-  location: "Orlando, FL",
-  jobType: "Teaching",
-  duration: "1+ year",
-  summary:
-    "Delivered hands-on teaching and mentorship for core CS courses, translating theory into practical problem-solving for large cohorts.",
-  keyPoint:
-    "Taught and mentored 250+ students per class through labs, debugging sessions, and rubric-driven feedback across C, SQL/DB concepts, and Java OOP.",
-  achievements: [
-    "Taught and mentored 250+ students per class across multiple CS courses",
-    "Improved student confidence and correctness through structured debugging + step-by-step explanation",
-    "Maintained fair, consistent evaluation using strong rubrics and actionable feedback at scale",
-  ],
-  responsibilities: [
-    "Taught lab sessions and walkthroughs by turning complex topics into clear, repeatable steps (problem breakdown → approach → implementation → testing).",
-    "Mentored students through debugging in C and Java (memory issues, loops, edge cases, OOP design), helping them learn *how to think* rather than just fixing code.",
-    "Guided students on SQL and database fundamentals (joins, aggregation, normalization, constraints) with practical examples and query-building strategies.",
-    "Delivered high-quality grading and feedback at scale, highlighting patterns of mistakes and giving specific next steps to improve coding style, logic, and performance.",
-    "Collaborated with instructors/TAs to refine rubrics, improve assignment clarity, and keep evaluation consistent across large sections.",
-  ],
-  technologies: ["C", "Java", "SQL", "MySQL", "OOP", "Data Structures", "Debugging", "Teaching"],
-},
   ],
   []
 );
+
 
 
   useEffect(() => {

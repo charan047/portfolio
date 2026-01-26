@@ -36,66 +36,51 @@ const Hero = () => {
     el.style.setProperty("--my", "35%");
   }, []);
 
-  // Typewriter roles
-  const [text, setText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopNum, setLoopNum] = useState(0);
-  const [typingSpeed, setTypingSpeed] = useState(135);
-
-  const titles = useMemo(
+  // Fast role rotator (no typewriter cursor)
+  const roles = useMemo(
     () => [
-      "Full-Stack Engineer (Java • React)",
-      "Backend Engineer (APIs • Systems)",
-      "AI/ML Engineer (CV • NLP)",
-      "Product-minded Builder",
-      "Performance + Security Focused",
+      "Software Engineer",
+      "Frontend / Backend / Full-Stack",
+      "Cloud/DevOps",
+      "Machine Learning / GenAI",
     ],
     []
   );
 
-  const chips = useMemo(
-    () => ["Java", "Spring Boot", "React", "AWS", "SQL", "ML/CV"],
-    []
-  );
+  const [currentRole, setCurrentRole] = useState(0);
+
+  // const chips = useMemo(
+  //   () => [
+  //     "Java 17",
+  //     "Spring Boot",
+  //     "Node.js",
+  //     "React",
+  //     "AWS",
+  //     "Terraform",
+  //     "Kubernetes",
+  //     "Postgres/MySQL",
+  //     "Redis",
+  //     "RAG",
+  //   ],
+  //   []
+  // );
 
   const metrics = useMemo(
     () => [
       { label: "UCF", value: "MS CS • GPA 3.91" },
-      { label: "Built for", value: "1K+ concurrent users" },
-      { label: "Taught", value: "250+ students / class" },
-      { label: "Open to", value: "Internships/Full Time roles" },
+      { label: "Latency", value: "p95 <350ms @ 1K+ sessions" },
+      { label: "Support", value: "45% ticket deflection (RAG)" },
+      { label: "Reliability", value: "MTTD 30→10 min (OTel + Grafana)" },
     ],
     []
   );
 
-  const period = 1600;
-
-  const tick = useCallback(() => {
-    const i = loopNum % titles.length;
-    const fullText = titles[i];
-
-    if (isDeleting) {
-      setText(fullText.substring(0, text.length - 1));
-      setTypingSpeed(65);
-    } else {
-      setText(fullText.substring(0, text.length + 1));
-      setTypingSpeed(135);
-    }
-
-    if (!isDeleting && text === fullText) {
-      setTypingSpeed(period);
-      setIsDeleting(true);
-    } else if (isDeleting && text === "") {
-      setIsDeleting(false);
-      setLoopNum(loopNum + 1);
-      setTypingSpeed(220);
-    }
-  }, [isDeleting, loopNum, text, titles]);
-
   useEffect(() => {
-    const timer = setTimeout(() => tick(), typingSpeed);
-    return () => clearTimeout(timer);
-  }, [text, typingSpeed, tick]);
+    const id = setInterval(() => {
+      setCurrentRole((i) => (i + 1) % roles.length);
+    }, 1100);
+    return () => clearInterval(id);
+  }, [roles.length]);
 
   // Seed spotlight on mount
   useEffect(() => {
@@ -132,25 +117,26 @@ const Hero = () => {
             <span className="title-accent">Charan</span> Kumar Edukulla
           </h1>
 
-          <div className="hero-role" aria-label="Current focus">
-            <span className="typing-text">{text}</span>
-            <span className="cursor" aria-hidden="true" />
+          <div className="hero-role" aria-label="Role highlights">
+            <span key={currentRole} className="role-badge">
+              {roles[currentRole]}
+            </span>
           </div>
 
           <p className="hero-summary">
-            I build scalable, production-ready software — from clean React UX to
-            Spring Boot APIs, cloud integrations, and ML-powered features. I
-            care about performance, reliability, and shipping polished
-            experiences that feel premium.
+            I build high-performance backend + full-stack products — microservices,
+            caching, and reliable cloud pipelines — plus GenAI features like RAG
+            copilots. I care about measurable impact: latency, reliability,
+            and polished user experiences.
           </p>
 
-          <div className="hero-chips" aria-label="Key skills">
+          {/* <div className="hero-chips" aria-label="Key skills">
             {chips.map((c) => (
               <span key={c} className="chip">
                 {c}
               </span>
             ))}
-          </div>
+          </div> */}
 
           <div className="hero-btns">
             <a href="#projects" className="btn primary-btn">
@@ -186,7 +172,7 @@ const Hero = () => {
 
           <div className="social-links" aria-label="Social links">
             <a
-              href="https://github.com/charan07"
+              href="https://github.com/charan047"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
@@ -204,7 +190,7 @@ const Hero = () => {
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
             <a
-              href="mailto:charan.kdf15@gmail.com"
+              href="mailto:charankumaredukulla@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Email"
@@ -230,16 +216,17 @@ const Hero = () => {
           </div>
 
           <div className="availability-badge" role="note">
-            Building premium apps + ML
-          </div>
+  Backend • Full-Stack • Cloud/DevOps • GenAI (RAG)
+</div>
 
-          {/* Floating tags (kept subtle + non-overlapping) */}
-          <div className="floating-tag ft1" aria-hidden="true">
-            React • Spring Boot
-          </div>
-          <div className="floating-tag ft2" aria-hidden="true">
-            Computer Vision • ML
-          </div>
+{/* Floating tags (kept subtle + non-overlapping) */}
+<div className="floating-tag ft1" aria-hidden="true">
+  Java • Spring Boot • Postgres • Redis
+</div>
+<div className="floating-tag ft2" aria-hidden="true">
+  AWS • Docker • Kubernetes • Terraform
+</div>
+
         </div>
       </div>
     </div>

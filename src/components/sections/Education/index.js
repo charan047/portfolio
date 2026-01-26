@@ -14,24 +14,13 @@ const Education = () => {
   {
     school: "University of Central Florida",
     degree: "Master of Science in Computer Science",
-    period: "Aug 2024 – Present",
+    period: "Aug 2024 – May 2026 (Expected)",
     highlights: [
-      "Advanced focus in AI/ML and full-stack systems — building end-to-end projects from model → API → product UI",
-      "Hands-on work across Computer Vision, Databases, and Systems with strong emphasis on real-world engineering and performance",
-      "Consistently high academic performance while balancing technical projects and campus responsibilities",
+      "GPA 3.91 — graduate coursework focused on scalable systems, databases, and applied AI/ML",
+      "Building production-grade full-stack and cloud-native projects with measurable performance + reliability improvements",
+      "Hands-on work across Computer Vision, Databases, and Systems with a shipping-first mindset",
     ],
     badges: ["GPA: 3.91", "Orlando, FL"],
-  },
-  {
-    school: "K L University",
-    degree: "Bachelor of Engineering in Computer Science (Honors)",
-    period: "Aug 2020 – Jun 2024",
-    highlights: [
-      "Honors curriculum with deep CS foundations: Data Structures & Algorithms, DBMS, Operating Systems, and Computer Networks",
-      "Built multiple software projects spanning full-stack web applications and machine learning, strengthening product thinking + engineering rigor",
-      "Graduated with strong academic distinction and consistent performance across core CS coursework",
-    ],
-    badges: ["GPA: 9.33", "India"],
   },
 ];
 

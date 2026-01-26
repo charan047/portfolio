@@ -5,6 +5,6 @@ import Skills from './index';
 describe('Skills', () => {
   test('renders skills title', () => {
     render(<Skills />);
-    expect(screen.getByText('My Skills')).toBeInTheDocument();
+    expect(screen.getByText('Stack Matrix')).toBeInTheDocument();
   });
 });

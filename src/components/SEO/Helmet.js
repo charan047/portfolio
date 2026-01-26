@@ -3,11 +3,11 @@ import { Helmet } from "react-helmet";
 import profileWebp from "../../assets/profile.webp";
 
 const SEOHelmet = ({ title, description, keywords }) => {
-  const siteURL = "https://venkatpantham.github.io/";
+  const siteURL = "https://charan047.github.io/portfolio";
   const defaultDescription =
-    "Software Engineer with expertise in full-stack development, building high-performance applications";
+    "Software Engineer building high-performance backend + full-stack products with cloud/DevOps and GenAI (RAG) pipelines.";
   const defaultKeywords =
-    "software engineer, full stack developer, react developer, web development";
+    "software engineer, full stack developer, backend engineer, java, spring boot, node.js, react, aws, kubernetes, terraform, rag, langchain, postgres, redis";
 
   return (
     <Helmet>
