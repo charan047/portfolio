@@ -52,7 +52,7 @@ const SEOHelmet = ({ title, description, keywords }) => {
       {/* ✅ Google Search Console verification */}
       <meta
         name="google-site-verification"
-        content="PASTE_YOUR_CODE_HERE"
+        content="ElllPch6mTA03y426ZSN7BSlVcOped0qyF-mCxeuP00"
       />
 
       {/* Preload LCP image */}
